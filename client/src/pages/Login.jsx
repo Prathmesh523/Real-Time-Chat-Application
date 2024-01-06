@@ -2,6 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import '../styles/Auth.css'
 
 export default function Login() {
     const [username, setUsername] = useState("")
@@ -24,15 +25,29 @@ export default function Login() {
         }
     }
     return (
-        <div className="user">
-            <form onSubmit={submit}>
-                <h1>MessageX</h1>
-                <input type='text' placeholder='Username' name='username' onChange={e => setUsername(e.target.value)} />
-                <input type="password" placeholder='Password' name='password' onChange={e => setPassword(e.target.value)} />
-                <button type='submit'>Login</button>
-                <span>Not created account yet? <Link to="/register">Register</Link></span>
-            </form>
+        <div className="form-container">
+            <div className="form-container-details">
+                <div className="form-container-title">
+                     MessageX
+                </div>
+                <div className="form-container-subtitle">
+                    Login
+                </div>
+            </div>
+            <form className='form' onSubmit={submit}>
+                <div className="form-field">
+                    <input className='form-input' type='text' placeholder='Username' name='username' onChange={e => setUsername(e.target.value)} />
+                </div>
+                <div className="form-field">
+                    <input className='form-input' type="password" placeholder='Password' name='password' onChange={e => setPassword(e.target.value)} />
+                </div>
 
+                <button className='form-submit' type='submit'>Login</button>
+            </form>
+            <div className="form-container-links">
+                <span className='form-container-link'>Not created account yet? <Link to="/register">Register</Link></span>
+            </div>
+            
         </div>
     )
 }

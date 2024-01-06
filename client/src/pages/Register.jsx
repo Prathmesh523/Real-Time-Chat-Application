@@ -2,7 +2,7 @@ import { useState } from 'react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import '../styles/Register.css'
+import '../styles/Auth.css'
 
 export default function Register() {
     const [username, setUsername] = useState("")
@@ -29,16 +29,34 @@ export default function Register() {
     }
 
     return (
-        <div className="box">
+        <div className="form-container">
+            <div className="form-container-details">
+                <div className="form-container-title">
+                     MessageX
+                </div>
+                <div className="form-container-subtitle">
+                    Registration
+                </div>
+            </div>
             <form className='form' onSubmit={submit}>
-                <h1 className='title'>MessageX</h1>
-                <input className='input-text' type='text' placeholder='Username' name='username' onChange={e => setUsername(e.target.value)} />
-                <input className='input-text' type="email" placeholder='Email' name='email' onChange={e => setEmail(e.target.value)} />
-                <input className='input-text' type="password" placeholder='Password' name='password' onChange={e => setPassword(e.target.value)} />
-                <button className='btn' type='submit'>Register</button>
-                <span className='endtext'>Already Registered? <Link to="/login">Login</Link></span>
-            </form>
+                <div className="form-field">
+                    <input className='form-input' type='text' placeholder='Username' name='username' onChange={e => setUsername(e.target.value)} />
+                </div>
+                <div className="form-field">
+                    <input className='form-input' type="email" placeholder='Email' name='email' onChange={e => setEmail(e.target.value)} />
+                </div>
+                <div className="form-field">
+                    <input className='form-input' type="password" placeholder='Password' name='password' onChange={e => setPassword(e.target.value)} />
+                </div>
 
+                <button className='form-submit' type='submit'>Register</button>
+            </form>
+            <div className="form-container-links">
+                <span className='form-container-link'>Already Registered? <Link to="/login">Login</Link></span>
+            </div>
         </div>
+
+
     )
 }
+

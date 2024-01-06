@@ -2,10 +2,10 @@ import jwt from 'jsonwebtoken'
 
 const userDetails = async (req, res, next) => {
     try {
-        const token = req.body
+        const token = req.body.token
         const details = await jwt.verify(token, process.env.SECRET_KEY)
         if (details) {
-            res.json({status:true, data:details})
+            req.body=[details.username, details.password]
             next()
         }
         else {

@@ -24,6 +24,7 @@ export default function Login() {
             if(data.data.status)
             {
                 console.log(data.data.message)
+                console.log(data.data.token)
                 localStorage.setItem("token",data.data.token)
             }
         }

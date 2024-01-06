@@ -37,7 +37,6 @@ export const userRegister=async(req,res)=>{
 
 export const userLogin=async(req,res)=>{
     try {
-        console.log(req.body)
         const [username,password]=req.body
         if(!username ||!password)
         {
@@ -49,8 +48,9 @@ export const userLogin=async(req,res)=>{
             const valid=await bcrypt.compare(password,userCheck.password) 
             if(valid)
             {
+                
                 const token=await jwt.sign({username,password}, process.env.SECRET_KEY, {expiresIn:"2h"})
-                return res.json({status:true, message:"User Logged In Successfully", data:token})
+                return res.json({status:true, message:"User Logged In Successfully", token})
             }
             else
             {

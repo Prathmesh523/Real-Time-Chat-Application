@@ -20,8 +20,12 @@ export default function Login() {
             console.log("Password must be more than 7 characters")
         }
         else {
-            const data = await axios.post('http://localhost:5000/login', [username, password])
-            console.log(data.data.message)
+            const data = await axios.post('http://localhost:5000/users/login', [username, password])
+            if(data.data.status)
+            {
+                console.log(data.data.message)
+                localStorage.setItem("token",data.data.token)
+            }
         }
     }
     return (

@@ -21,7 +21,7 @@ export default function Register() {
             console.log("Password must be more than 7 characters")
         }
         else {
-            const data = await axios.post('http://localhost:5000/register', [username, email, password])
+            const data = await axios.post('http://localhost:5000/users/register', [username, email, password])
 
             console.log(data.data.message)
 

@@ -7,12 +7,12 @@ export const userRegister=async(req,res)=>{
 
         if(!username || !email ||!password)
         {
-            return res.status(401).json({status:false, message:"Every field is mandatory"})
+            return res.json({status:false, message:"Every field is mandatory"})
         }
         const userCheck=await User.findOne({username, email})
         if(userCheck)
         {
-            return res.status(401).json({status:false, message:"User already Registered"})
+            return res.json({status:false, message:"User already Registered"})
         }
         const hashedPassword=await bcrypt.hash(password, 10)
         const user=await User.create({
@@ -22,15 +22,15 @@ export const userRegister=async(req,res)=>{
         })
         if(user)
         {
-            return res.status(201).json({status:true, message:"User Registered Successfully"})
+            return res.json({status:true, message:"User Registered Successfully"})
         }
         else
         {
-            return res.status(401).json({status:false, message:"Some Error Occurred"})
+            return res.json({status:false, message:"Some Error Occurred"})
         }
     } catch (error) {
         console.log(error)
-        return res.status(401).json({status:false, message:"Some Error Occurred"})
+        return res.json({status:false, message:"Some Error Occurred"})
     }
 }
 
@@ -40,20 +40,28 @@ export const userLogin=async(req,res)=>{
         const [username,password]=req.body
         if(!username ||!password)
         {
-            return res.status(401).json({status:false, message:"Every field is mandatory"})
+            return res.json({status:false, message:"Every field is mandatory"})
         }
         const userCheck=await User.findOne({username})
         if(userCheck)
         {
-            return res.status(201).json({status:true, message:"User Logged In Successfully"})
+            const valid=await bcrypt.compare(password,userCheck.password) 
+            if(valid)
+            {
+                return res.json({status:true, message:"User Logged In Successfully"})
+            }
+            else
+            {
+                return res.json({status:false, message:"Incorrect Password"})
+            }
         }
         else
         {
-            return res.status(401).json({status:false, message:"User Not Registered"})
+            return res.json({status:false, message:"User Not Registered"})
         }
     } catch (error) {
         console.log(error)
-        return res.status(401).json({status:false, message:"Some Error Occurred"})
+        return res.json({status:false, message:"Some Error Occurred"})
     }
 }
 

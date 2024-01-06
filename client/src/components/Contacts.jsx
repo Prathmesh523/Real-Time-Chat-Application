@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import '../styles/Contacts.css'
 
 export default function Contacts() {
   const [username, setUsername] = useState("")
@@ -17,13 +18,13 @@ export default function Contacts() {
     display()
   }, [])
   return (
-    <div className="contacts">
-      <div className="self-item">{username}</div>
-      <div className="other-items">
-        <ul className='list-items'>
+    <div className="contact-container">
+      <div className="contact-container-self">{username}</div>
+      <div className="contact-container-others">
+        <ul className='contact-container-items'>
           {
             contacts.map((contact) => {
-              return <li key={contact} className="list-item">{contact}</li>
+              return <li key={contact} className="contact-container-item">{contact}</li>
             })
           }
         </ul>

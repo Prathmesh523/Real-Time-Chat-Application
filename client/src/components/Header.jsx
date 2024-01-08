@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Header() {
+export default function Header({selectedUser}) {
   return (
-    <div>
-      h
+    <div className='header-container'>
+      {selectedUser}
     </div>
   )
 }

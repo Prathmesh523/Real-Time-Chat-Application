@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react' 
 
-export default function Message() {
+export default function Message({currentUser, selectedUser, sendMessage}) {
+  
   return (
-    <div>
-      m
+    <div className='message-container'>
+        
     </div>
   )
 }

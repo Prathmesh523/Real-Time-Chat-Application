@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../styles/Auth.css'
 
 export default function Register() {
+    const navigate=useNavigate()
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -22,8 +23,10 @@ export default function Register() {
         }
         else {
             const data = await axios.post('http://localhost:5000/users/register', [username, email, password])
-
-            console.log(data.data.message)
+            
+            if(data.data.status){
+                navigate("/login")
+            }
 
         }
     }

@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../styles/Auth.css'
 
 export default function Login() {
+    const navigate=useNavigate()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -23,9 +24,8 @@ export default function Login() {
             const data = await axios.post('http://localhost:5000/users/login', [username, password])
             if(data.data.status)
             {
-                console.log(data.data.message)
-                console.log(data.data.token)
                 localStorage.setItem("token",data.data.token)
+                navigate("/chat")
             }
         }
     }

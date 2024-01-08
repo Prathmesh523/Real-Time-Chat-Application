@@ -11,15 +11,7 @@ export default function Chat() {
   const [selectedUser, setSelectedUser] = useState(undefined)
   const [sendMessage, setSendMessage]=useState("")
 
-  useEffect(()=>{
-    const display=async()=>{
-      if(sendMessage.length>0 && currentUser!==undefined && selectedUser!==undefined)
-      {
-        const data=await axios.post("http://localhost:5000/chat/postChat", [ currentUser, selectedUser, sendMessage ])
-      }
-    }
-    display()
-  },[sendMessage])
+  
 
   return (
     <div className='container'>

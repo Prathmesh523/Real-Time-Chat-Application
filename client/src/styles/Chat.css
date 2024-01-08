@@ -1,29 +1,35 @@
 .container{
     width: 900px;
     height: 600px;
-    background-color: rgb(220, 226, 231);
+    background-color: rgb(63, 63, 63);
     display: flex;
     flex-direction: row;
+    border-radius: 10px;
+    padding: 4px;
 }
 .right-container
 {
     height: 100%;
     width: 70%;
     background-color: green;
+    border: 2px solid rgb(63, 63, 63);
 }
 
+/* contact component */
 .contact-container{
     height: 100%;
     width: 30%;
     background-color: rgb(222, 225, 225);
+    border: 2px solid rgb(63, 63, 63);
 }
 .contact-container-self{
     height: 10%;
-    color:#555;
+    color:black;
     font-size: 20px;
-    background-color: rgb(169, 169, 151);
+    background-color: rgb(244, 244, 213);
     padding: 20px;
     text-align: center;
+    border-bottom: 4px solid rgb(63, 63, 63);
 }
 .contact-container-others{
     height: 90%;
@@ -36,35 +42,44 @@
 }
 .contact-container-item{
     padding: 20px;
+    border-bottom: 2px solid rgb(156, 76, 76);
 }
 .contact-container-item:hover{
     cursor: pointer;
     background-color: rgb(192, 192, 187);
 }
 
+/* header component */
 .header-container{
     background-color: #868686;
     height: 10%;
     font-size: 20px;
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 4px solid rgb(63, 63, 63);
+}
+.header-name{
+    width: 80%;
+    padding: 15px 0px 20px 30px;
+}   
+.header-logout{
+    width: 15%;
+    margin: 10px;
+}
+.header-logout:hover{
+    cursor: pointer;
 }
 
-.message-container
-{
-    height: 80%;
-    background-color: rgb(181, 181, 185);
-}
-
+/* input component */
 .input-container
 {
     height: 10%;
-    background-color: rgb(102, 102, 100);
+    background-color: rgb(100, 100, 99);
 }
 .input-container-field
 {
     width: 80%;
-    height: 70%;
+    height: 60%;
     font-size: 18px;
     margin: 10px 0px 0px 30px;
     padding: 10px;
@@ -76,4 +91,55 @@
     font-size: 18px;
     padding: 10px;
     margin: 10px 0px 0px 0px;
+}
+.input-container-btn:hover{
+    cursor: pointer;
+}
+
+/* message component */
+.message-container
+{
+    height: 80%;
+    background-color: rgb(189, 189, 190);
+    border-bottom: 4px solid rgb(63, 63, 63);
+}
+.messages{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 0.2rem;
+        &-thumb {
+          background-color: #ffffff39;
+          width: 0.1rem;
+          border-radius: 1rem;
+        }
+      }
+
+    .message{
+        display: flex;
+        align-items: center;
+        margin:5px 0px;
+        .content{
+            max-width: 40%;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            color: rgb(0, 0, 0);
+        }
+    }
+    .sended{
+        justify-content: flex-end;
+        margin-right: 5px;
+        .content{
+            background-color: #5d00ff21;
+        }
+    }
+    .received{
+        justify-content: flex-start;
+        margin-left: 5px;
+        .content{
+            background-color: #08080820;
+        }
+    }
 }

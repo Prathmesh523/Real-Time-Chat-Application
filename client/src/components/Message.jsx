@@ -4,17 +4,16 @@ import axios from 'axios'
 export default function Message({ currentUser, selectedUser, sendMessage }) {
   const [allMessages, setAllMessages] = useState(undefined)
 
-  useEffect(()=>{
-    const display=async()=>{
-      if(sendMessage.length>0 && currentUser!==undefined && selectedUser!==undefined)
-      {
-        const data=await axios.post("http://localhost:5000/chat/postChat", [ currentUser, selectedUser, sendMessage ])
+  useEffect(() => {
+    const display = async () => {
+      if (sendMessage.length > 0 && currentUser !== undefined && selectedUser !== undefined) {
+        const data = await axios.post("http://localhost:5000/chat/postChat", [currentUser, selectedUser, sendMessage])
         const messages = await axios.post("http://localhost:5000/chat/allChats", [currentUser, selectedUser])
         setAllMessages(messages.data.projectMessages)
       }
     }
     display()
-  },[sendMessage])
+  }, [sendMessage])
 
   useEffect(() => {
     const display = async () => {
@@ -26,17 +25,23 @@ export default function Message({ currentUser, selectedUser, sendMessage }) {
     display()
   }, [selectedUser])
 
-  
+
   if (allMessages !== undefined) {
     return (
       <div className='message-container'>
-        <ul className="message-container-items">
+        <div className="messages">
           {
-            allMessages.map((msg, index) => {
-              return <li key={index}>{msg.message}</li>
+            allMessages.map((msg) => {
+              return (
+                <div className={`message ${currentUser === msg.sender ? "sended" : "received"}`}>
+                  <div className="content ">
+                    <p>{msg.message}</p>
+                  </div>
+                </div>
+              )
             })
           }
-        </ul>
+        </div>
 
       </div>
     )

@@ -32,8 +32,8 @@ export const allChats=async (req,res)=>{
         }).sort({updatedAt:1})
         const projectMessages=messages.map((msg)=>{
             return{
-                from:msg.sender,
-                to:msg.receiver,
+                sender:msg.sender,
+                receiver:msg.receiver,
                 message:msg.message
             }
         })

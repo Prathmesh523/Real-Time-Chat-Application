@@ -15,6 +15,14 @@ app.use(express.json())
 app.use("/users",userRoutes)
 app.use("/chat",chatRoutes)
 
-app.listen(PORT, ()=>{
-    console.log(`Server running on PORT: ${PORT}`)
-})
+// const server=app.listen(PORT, ()=>{
+//     console.log(`Server running on PORT: ${PORT}`)
+// })
+
+// const io=socket(server,{
+//     cors:{
+//         origin:"http://localhost:3000",
+//         credentials:true
+//     }
+// })
+

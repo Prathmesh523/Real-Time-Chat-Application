@@ -49,7 +49,7 @@ export const userLogin=async(req,res)=>{
             if(valid)
             {
                 
-                const token=await jwt.sign({username,password}, process.env.SECRET_KEY, {expiresIn:"2h"})
+                const token=await jwt.sign({username,password}, process.env.SECRET_KEY, {expiresIn:"6h"})
                 return res.json({status:true, message:"User Logged In Successfully", token})
             }
             else

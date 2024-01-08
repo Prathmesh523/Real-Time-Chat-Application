@@ -5,14 +5,13 @@ const chatSchema=mongoose.Schema({
         type:String,
         required:true
     },
-    from:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Users",
+    users:Array,
+    sender:{
+        type:String,
         required:true
     },
-    to:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Users",
+    receiver:{
+        type:String,
         required:true
     }
 }, {timestamps:true})
